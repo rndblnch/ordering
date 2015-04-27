@@ -1,6 +1,14 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+Command line utility to perform clustering and optimal ordering.
+
+Copyright (c) 2011--2015, IIHM/LIG - Renaud Blanch <http://iihm.imag.fr/blanch/>
+Licence: GPLv3 or higher <http://www.gnu.org/licenses/gpl.html>
+"""
+
+
 ##############################################################################
 # arguments handling #########################################################
 ##############################################################################

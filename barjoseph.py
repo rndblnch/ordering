@@ -2,8 +2,10 @@
 
 """optimal dendrogram ordering
 
+Copyright (c) 2011--2015, IIHM/LIG - Renaud Blanch <http://iihm.imag.fr/blanch/>
+Licence: GPLv3 or higher <http://www.gnu.org/licenses/gpl.html>
+
 implementation of binary tree ordering described in [Bar-Joseph et al., 2003]
-by Renaud Blanch.
 
 [Bar-Joseph et al., 2003]
 K-ary Clustering with Optimal Leaf Ordering for Gene Expression Data.
@@ -72,7 +74,7 @@ def optimal(v, S, left, right, is_leaf, is_empty):
 			Ls = [j]
 		
 		# maximize similarity
-		maximum, order = 0., None
+		maximum = 0.
 		for k in Ks:
 			w_maximum, w_order = M(w, i, k)
 			for l in Ls:
