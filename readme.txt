@@ -21,13 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 Implementation of binary tree optimal ordering described in
 [Bar-Joseph et al., 2003]
 
-[Bar-Joseph et al., 2003]
-K-ary Clustering with Optimal Leaf Ordering for Gene Expression Data.
-Ziv Bar-Joseph, Erik D. Demaine, David K. Gifford, Angèle M. Hamel,
-Tommy S. Jaakkola and Nathan Srebro
-Bioinformatics, 19(9), pp 1070-8, 2003
-http://www.cs.cmu.edu/~zivbj/compBio/k-aryBio.pdf
-
 
 2. dependencies
 
