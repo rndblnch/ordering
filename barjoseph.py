@@ -82,7 +82,7 @@ def optimal(v, S, left, right, is_leaf, is_empty):
 				similarity = w_maximum + S(k, l) + x_maximum
 				if similarity > maximum:
 					maximum, order = similarity, w_order + x_order
-
+		
 		return maximum, order
 	
 	# and now the external loop

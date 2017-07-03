@@ -23,6 +23,7 @@ DEFAULTS = {
 	"sep":    '\t',
 	"metric": None,
 	"method": "average",
+	"skip":   0,
 }
 
 def exit_usage(name, message=None, code=0):
@@ -32,6 +33,7 @@ def exit_usage(name, message=None, code=0):
 	Usage: %(name)s [-hs:d:p:l:n] <filename>
 		-h  --help               print this help message then exit
 		-s  --separator <sep>    use 'sep' as input delimitor (defaults to %(sep)r)
+		    --skip <n>           skip 'n' lines from input (defaults to %(skip)r)
 		-d  --distance <metric>  use 'metric' distance
 		                         if not set, input is interpreted directly as a distance matrix
 		                         else, input is interpreted as observations
@@ -46,7 +48,7 @@ def exit_usage(name, message=None, code=0):
 prog_name, *args = sys.argv
 try:
 	options, args = getopt.getopt(args, "hs:nd:p:l:",
-	                              ["help", "separator=", "nooptimal",
+	                              ["help", "separator=", "skip=", "nooptimal",
 	                               "distance=", "p-norm=", "linkage="])
 except getopt.GetoptError as message:
 	exit_usage(prog_name, message, 1)
@@ -56,6 +58,7 @@ if len(args) > 1:
 
 optimal = True
 sep =    DEFAULTS["sep"]
+skip =   DEFAULTS["skip"]
 metric = DEFAULTS["metric"]
 method = DEFAULTS["method"]
 metric_kwargs = {}
@@ -67,6 +70,8 @@ for opt, value in options:
 		optimal = False
 	elif opt in ["-s", "--separator"]:
 		sep = value
+	elif opt in ["--skip"]:
+		skip = int(value)
 	elif opt in ["-d", "--distance"]:
 		metric = value
 	elif opt in ["-p", "--p-norm"]:
@@ -88,6 +93,9 @@ if len(args) == 0: # reading from stdin
 	data_stream = sys.stdin
 else:
 	data_stream = open(args[0])
+
+for _ in range(skip): # skipping header
+	next(data_stream)
 
 names = []
 vectors = []
