@@ -74,7 +74,7 @@ def optimal(v, S, left, right, is_leaf, is_empty):
 			Ls = [j]
 		
 		# maximize similarity
-		maximum = 0.
+		maximum, order = 0., None
 		for k in Ks:
 			w_maximum, w_order = M(w, i, k)
 			for l in Ls:
